@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Pal Optical</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("G9y6QJpq10bQbBsXY"); // Replace with your EmailJS public key from https://www.emailjs.com/
+        })();
+    </script>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo"><img src="pallogo.png" alt="Pal Optical"></a>
+
+        <div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="doctors.html">Doctors</a>
+            <a href="services.html">Services</a>
+            <a href="price.html">Prices</a>
+            <a href="policy.html">Policy</a>
+            <a href="brands.html">Brands</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+    
+    <script src="script.js"></script>
+
+    <div class="page-header">
+        <h1>Get In Touch</h1>
+    </div>
+
+    <section class="container">
+        <div class="grid-2">
+            <div class="contact-info">
+                <h3>CONTACT DETAILS</h3>
+                <br>
+                <p><strong>OPTICAL / GENERAL:</strong> <br> <a href="tel:8592663003" style="color:inherit; text-decoration:none;">859.266.3003</a></p>
+                <p><strong>EYE EXAMS:</strong> <br> <a href="tel:8592696921" style="color:inherit; text-decoration:none;">859.269.6921</a></p>
+                <p><strong>FAX:</strong> <br> 859.266.9504</p>
+                <p><strong>EMAIL:</strong> <br> <a href="mailto:paloptical18@gmail.com" style="color:inherit; text-decoration:none;">paloptical18@gmail.com</a></p>
+                <br>
+                <h3>LOCATION</h3>
+                <p>1555 E New Circle Road Suite 146<br>Lexington, KY 40509</p>
+            </div>
+
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100604.57723932782!2d-84.56008819070923!3d38.02868453488795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88424429cc9cebcf%3A0x50c37c7689953250!2s1555%20E%20New%20Circle%20Road%20Suite%20146%2C%20Lexington%2C%20KY%2040509!5e0!3m2!1sen!2sus!4v1707600000000!5m2!1sen!2sus"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="contact-form">
+            <h3>Send Us an Email</h3>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Email</button>
+            </form>
+            <p id="form-status" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; James Brentlinger™2026</p>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formStatus = document.getElementById('form-status');
+            formStatus.textContent = 'Sending...';
+            formStatus.style.color = 'var(--text-main)';
+
+            const templateParams = {
+                from_name: document.getElementById('name').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                to_email: 'paloptical18@gmail.com'
+            };
+
+            emailjs.send('service_t5ufz3u', 'template_shmrp6a', templateParams)
+                .then(function(response) {
+                    formStatus.textContent = 'Email sent successfully!';
+                    formStatus.style.color = 'green';
+                    document.getElementById('contact-form').reset();
+                }, function(error) {
+                    formStatus.textContent = 'Failed to send email. Please try again.';
+                    formStatus.style.color = 'red';
+                    console.error('EmailJS error:', error);
+                });
+        });
+    </script>
+
+</body>
+</html>
