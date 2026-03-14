@@ -28,10 +28,20 @@
             <a href="price.html">Prices</a>
             <a href="policy.html">Policy</a>
             <a href="contact.html">Contact</a>
+            <button id="vision-settings-btn" onclick="showVisionModal()">Vision Comfort</button>
         </div>
     </nav>
 
+    <div id="vision-modal">
+        <div class="modal-content">
+            <h2 id="prompt-title" style="margin-top: 0;">Vision Comfort</h2>
+            <p id="prompt-desc" style="font-family: sans-serif; color: #bbb;">Adjusting your browsing experience...</p>
+            <div id="options-container"></div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>initVisionComfort();</script>
 
     <div class="page-header">
         <h1>Lens Prices</h1>
